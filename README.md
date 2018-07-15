@@ -109,6 +109,16 @@ import { AuthFilter } from '../amplify'
 router.beforeEach(AuthFilter);
 ```
 
+### Useful library
+
+* Virtual Keyboard on Raspberry PI
+  - [How to use on-screen virtual keyboard on Linux](http://xmodulo.com/onscreen-virtual-keyboard-linux.html)
+  - [On Screen Keyboard Pop Up Automatically](https://stackoverflow.com/questions/43194280/on-screen-keyboard-pop-up-automatically)
+
+
+#### 
+
+
 ### Storage Components
 
 In this sample, `src/amplify` package register a group of Amplify related components. Other than Auth components, there are two storage related components:
@@ -125,3 +135,5 @@ In this sample, `src/amplify` package register a group of Amplify related compon
 ## License
 
 This library is licensed under the Apache 2.0 License. 
+
+
