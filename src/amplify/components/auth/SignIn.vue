@@ -60,8 +60,8 @@ export default {
   name: 'SignIn',
   data () {
     return {
-        username: '',
-        password: '',
+        username: 'qiaoshi@amazon.com',
+        password: 'sq880826',
 
         user: null,
         confirmView: false,
@@ -89,7 +89,6 @@ export default {
           this.checkUser()
         })
         .catch(err => this.setError(err))
-
     },
     checkUser: function() {
       const user = this.user;

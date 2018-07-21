@@ -13,41 +13,28 @@
 
 <template>
   <div>
-    <el-row>
-      <el-col :span="6">
-        <el-card :body-style="{ padding: '16px'}" class="card">
+    <el-row v-for="row in Math.ceil(things.length/4)">
+      <el-col :span="6" v-for="index in 4" v-if="index - 1 + (row -1) * 4 < things.length">
+        <!--{{ index - 1 + (row -1) * 4 }}-->
+        <!-- light -->
+        <el-card :body-style="{ padding: '16px'}" class="card" v-if="things[index - 1 + (row -1) * 4].type === 'light'">
           <el-row>
             <el-col :span="12">
               <img src="../assets/icon_light_on.png" class="image">
             </el-col>
             <el-col :span="12" style="padding: 12px; margin-top: 12px">
               <div>
-                <span>客厅灯</span>
+                <span>{{ things[index - 1 + (row -1) * 4].location }}</span>
               </div>
             </el-col>
           </el-row>
         </el-card>
-      </el-col>
-      <el-col :span="6">
-        <el-card :body-style="{ padding: '16px'}" class="card">
-          <el-row>
-            <el-col :span="12">
-              <img src="../assets/icon_light_on.png" class="image">
-            </el-col>
-            <el-col :span="12" style="padding: 12px; margin-top: 12px">
-              <div>
-                <span>卧室灯</span>
-              </div>
-            </el-col>
-          </el-row>
-        </el-card>
-      </el-col>
-      <el-col :span="6">
-        <el-card :body-style="{ padding: '16px'}" class="card">
+        <!-- air purifier -->
+        <el-card :body-style="{ padding: '16px'}" class="card" v-if="things[index - 1 + (row -1) * 4].type === 'airPurifier'">
           <el-row>
             <el-col :span="12">
               <img src="../assets/icon_air_purifier.png" class="image">
-              <div class="label">卧室</div>
+              <div class="label">{{ things[index - 1 + (row -1) * 4].location }}</div>
             </el-col>
             <el-col :span="12" style="padding: 12px; margin-top: 10px">
               <div>
@@ -56,13 +43,12 @@
             </el-col>
           </el-row>
         </el-card>
-      </el-col>
-      <el-col :span="6">
-        <el-card :body-style="{ padding: '16px'}" class="card">
+        <!-- moisture -->
+        <el-card :body-style="{ padding: '16px'}" class="card" v-if="things[index - 1 + (row -1) * 4].type === 'moisture'">
           <el-row>
             <el-col :span="12">
               <img src="../assets/icon_flower.png" class="image">
-              <div class="label">百合</div>
+              <div class="label">{{ things[index -1 + (row-1) * 4].name }}</div>
             </el-col>
             <el-col :span="12" style="padding: 12px; margin-top: 10px">
               <div>
@@ -71,15 +57,12 @@
             </el-col>
           </el-row>
         </el-card>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="6">
-        <el-card :body-style="{ padding: '16px'}" class="card">
+        <!-- air conditioner -->
+        <el-card :body-style="{ padding: '16px'}" class="card" v-if="things[index - 1 + (row -1) * 4].type === 'airConditioner'">
           <el-row>
             <el-col :span="12">
               <img src="../assets/icon_air_conditioner.png" class="image">
-              <div class="label">卧室</div>
+              <div class="label">{{ things[index - 1 + (row -1) * 4].location }}</div>
             </el-col>
             <el-col :span="12" style="padding: 12px; margin-top: 10px">
               <div>
@@ -88,9 +71,8 @@
             </el-col>
           </el-row>
         </el-card>
-      </el-col>
-      <el-col :span="6">
-        <el-card :body-style="{ padding: '16px'}" class="card">
+        <!-- iRobot -->
+        <el-card :body-style="{ padding: '16px'}" class="card" v-if="things[index - 1 + (row -1) * 4].type === 'iRobot'">
           <el-row>
             <el-col :span="12">
               <img src="../assets/icon_iRobot.png" class="image">
@@ -132,6 +114,8 @@
 
 <script>
 import { AmplifyTheme } from '../amplify'
+import Amplify, { PubSub } from 'aws-amplify'
+import { AWSIoTProvider } from 'aws-amplify/lib/PubSub/Providers'
 
 export default {
   name: 'Home',
@@ -178,6 +162,18 @@ export default {
         }
       ]
     }
+  },
+  created() {
+    Amplify.addPluggable(new AWSIoTProvider({
+      aws_pubsub_region: 'us-west-2',
+      aws_pubsub_endpoint: 'wss://abty4kifln98q.iot.us-west-2.amazonaws.com/mqtt'
+    }))
+
+    PubSub.subscribe('myTopic').subscribe({
+      next: data => console.log('Message received', data),
+      error: error => console.error(error),
+      close: () => console.log('Done'),
+    })
   }
 }
 </script>
