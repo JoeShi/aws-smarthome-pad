@@ -18,6 +18,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
+import Fingerprint2 from 'fingerprintjs2'
 
 import Amplify, { Auth, Logger } from 'aws-amplify'
 import aws_exports from './aws-exports'
@@ -34,6 +35,11 @@ Auth.currentUserInfo()
   .catch(err => logger.debug(err))
 
 Vue.use(ElementUI);
+
+new Fingerprint2().get((result, components) => {
+  console.log(result)
+  console.log(components)
+})
 
 /* eslint-disable no-new */
 new Vue({

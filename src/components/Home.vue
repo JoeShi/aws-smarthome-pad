@@ -12,82 +12,123 @@
  */
 
 <template>
-  <div :style="theme.container">
-    <h1 :style="theme.h1">
-      AWS Amplify Vue Sample
-    </h1>
-
-    <div :style="theme.section">
-      <h2 :style="theme.h2">Sample Structure</h2>
-      <pre :style="theme.pre">
-        src/
-        ├── App.vue
-        ├── amplify
-        │   ├── AmplifyStore.js
-        │   ├── AmplifyTheme.js
-        │   ├── AuthRouter.js
-        │   ├── AuthView.js
-        │   ├── components
-        │   │   ├── auth
-        │   │   │   ├── ConfirmSignUp.vue
-        │   │   │   ├── ForgotPassword.vue
-        │   │   │   ├── Greetings.vue
-        │   │   │   ├── SignIn.vue
-        │   │   │   ├── SignOut.vue
-        │   │   │   ├── SignUp.vue
-        │   │   │   ├── VerifyContact.vue
-        │   │   │   └── index.js
-        │   │   ├── index.js
-        │   │   └── storage
-        │   │       ├── PhotoPicker.vue
-        │   │       ├── SimpleForm.vue
-        │   │       └── index.js
-        │   └── index.js
-        ├── assets
-        │   └── logo.png
-        ├── aws-exports.js
-        ├── components
-        │   ├── Home.vue
-        │   ├── Menu.vue
-        │   ├── Profile.vue
-        │   └── index.js
-        ├── main.js
-        ├── notes
-        │   ├── NotesTheme.js
-        │   ├── components
-        │   │   ├── Note.vue
-        │   │   ├── Notes.vue
-        │   │   ├── index.js
-        │   │   └── persist
-        │   │       ├── CacheStore.js
-        │   │       ├── InMemoryStore.js
-        │   │       └── index.js
-        │   └── index.js
-        └── router
-            └── index.js
-      </pre>
-      <h3 :style="theme.h3">Config</h3>
-      <ol>
-        <li>Download 'aws-exports.js' to 'src/'</li>
-        <li>Modify 'src/App.vue' to config aws-amplify</li>
-      </ol>
-      <h3 :style="theme.h3">Router</h3>
-      <p>Router is created inside 'src/router/index.js'</p>
-      <h3 :style="theme.h3">AWS Amplify</h3>
-      <p>AWS Amplify related code under 'src/amplify'</p>
-      <p>Auth views are under 'src/amplify/components/auth'</p>
-      <h3 :style="theme.h3">Notes Sample</h3>
-      <p>Notes related code under 'src/notes'</p>
-      <p>Two persist store: InMemoryStore and CacheStore</p>
-      <p>CacheStore built on top of aws-amplify 'Cache' library</p>
-    </div>
-
-    <div :style="theme.section">
-      <h2 :style="theme.h2">AWS Amplify Links</h2>
-      <a :style="theme.link" href="https://github.com/aws/aws-amplify">GitHub</a>
-    </div>
+  <div>
+    <el-row>
+      <el-col :span="6">
+        <el-card :body-style="{ padding: '16px'}" class="card">
+          <el-row>
+            <el-col :span="12">
+              <img src="../assets/icon_light_on.png" class="image">
+            </el-col>
+            <el-col :span="12" style="padding: 12px; margin-top: 12px">
+              <div>
+                <span>客厅灯</span>
+              </div>
+            </el-col>
+          </el-row>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card :body-style="{ padding: '16px'}" class="card">
+          <el-row>
+            <el-col :span="12">
+              <img src="../assets/icon_light_on.png" class="image">
+            </el-col>
+            <el-col :span="12" style="padding: 12px; margin-top: 12px">
+              <div>
+                <span>卧室灯</span>
+              </div>
+            </el-col>
+          </el-row>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card :body-style="{ padding: '16px'}" class="card">
+          <el-row>
+            <el-col :span="12">
+              <img src="../assets/icon_air_purifier.png" class="image">
+              <div class="label">卧室</div>
+            </el-col>
+            <el-col :span="12" style="padding: 12px; margin-top: 10px">
+              <div>
+                <span style="font-size: 2.5em">86</span>
+              </div>
+            </el-col>
+          </el-row>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card :body-style="{ padding: '16px'}" class="card">
+          <el-row>
+            <el-col :span="12">
+              <img src="../assets/icon_flower.png" class="image">
+              <div class="label">百合</div>
+            </el-col>
+            <el-col :span="12" style="padding: 12px; margin-top: 10px">
+              <div>
+                <span style="font-size: 2.5em">123</span>
+              </div>
+            </el-col>
+          </el-row>
+        </el-card>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="6">
+        <el-card :body-style="{ padding: '16px'}" class="card">
+          <el-row>
+            <el-col :span="12">
+              <img src="../assets/icon_air_conditioner.png" class="image">
+              <div class="label">卧室</div>
+            </el-col>
+            <el-col :span="12" style="padding: 12px; margin-top: 10px">
+              <div>
+                <span style="font-size: 2.5em">27</span>
+              </div>
+            </el-col>
+          </el-row>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card :body-style="{ padding: '16px'}" class="card">
+          <el-row>
+            <el-col :span="12">
+              <img src="../assets/icon_iRobot.png" class="image">
+              <div class="label">iRobot</div>
+            </el-col>
+            <el-col :span="12" style="padding: 12px; margin-top: 20px">
+              <div>
+                <span style="font-size: 1em">打扫中</span>
+              </div>
+            </el-col>
+          </el-row>
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
+
+<style scoped>
+  .label {
+    color: gray;
+  }
+  .card {
+    margin: 15px;
+  }
+  .image {
+    display: inline;
+    width: 64px;
+    height: 64px;
+  }
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  .clearfix:after {
+    clear: both
+  }
+</style>
 
 <script>
 import { AmplifyTheme } from '../amplify'
@@ -96,7 +137,46 @@ export default {
   name: 'Home',
   data () {
     return {
-      theme: AmplifyTheme
+      theme: AmplifyTheme,
+      things: [
+        {
+          type: 'light',
+          status: 'on',
+          location: '客厅',
+          thingName: '1'
+        },
+        {
+          type: 'light',
+          status: 'off',
+          location: '卧室',
+          thingName: '2'
+        },
+        {
+          type: 'airPurifier',
+          status: 'on',
+          location: '卧室',
+          thingName: '3'
+        },
+        {
+          type: 'moisture',
+          status: 'on',
+          location: '阳台',
+          name: '百合',
+          thingName: '4'
+        },
+        {
+          type: 'airConditioner',
+          status: 'on',
+          location: '卧室',
+          thingName: '5'
+        },
+        {
+          type: 'iRobot',
+          status: 'on',
+          location: '卧室',
+          thingName: '6'
+        }
+      ]
     }
   }
 }
