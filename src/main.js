@@ -26,7 +26,7 @@ import aws_exports from './aws-exports'
 Vue.config.productionTip = false
 
 Amplify.configure(aws_exports)
-Amplify.Logger.LOG_LEVEL = 'DEBUG'
+Amplify.Logger.LOG_LEVEL = 'LOG'
 
 const logger = new Logger('main')
 
@@ -38,7 +38,7 @@ Vue.use(ElementUI);
 
 new Fingerprint2().get((result, components) => {
   console.log(result)
-  console.log(components)
+  // console.log(components)
 })
 
 /* eslint-disable no-new */

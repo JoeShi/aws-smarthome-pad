@@ -14,9 +14,11 @@
 import Menu from './Menu'
 import Home from './Home'
 import Profile from './Profile'
+import AirConditioner from './AirConditioner'
 
 export {
   Menu,
   Home,
-  Profile
+  Profile,
+  AirConditioner
 }
