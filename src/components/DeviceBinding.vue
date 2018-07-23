@@ -30,7 +30,8 @@
         API.post('ThingsCRUD', '/Things', {
           body: {
             thingName: thingName,
-            createdOn: new Date()
+            createdOn: new Date(),
+            alexaType: 'SmartHome'
           }
         }).then(() => {
           self.binding = false
