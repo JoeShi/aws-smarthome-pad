@@ -13,7 +13,7 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-import { Menu, Home, Profile, AirConditioner } from '@/components'
+import { Menu, Home, Profile, AirConditioner, DeviceBinding } from '@/components'
 import { Notes } from '@/notes'
 
 import { AuthRouter, AuthFilter } from '../amplify'
@@ -46,6 +46,11 @@ const router = new Router({
       path: '/airConditioners/:thingName',
       name: 'AirConditioner',
       component: AirConditioner
+    },
+    {
+      path: '/devices/:thingName/bind',
+      name: 'DeviceBind',
+      component: DeviceBinding
     },
     AuthRouter
   ]

@@ -15,10 +15,12 @@ import Menu from './Menu'
 import Home from './Home'
 import Profile from './Profile'
 import AirConditioner from './AirConditioner'
+import DeviceBinding from './DeviceBinding'
 
 export {
   Menu,
   Home,
   Profile,
-  AirConditioner
+  AirConditioner,
+  DeviceBinding
 }

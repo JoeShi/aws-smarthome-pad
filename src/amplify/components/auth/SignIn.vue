@@ -86,6 +86,7 @@ export default {
             that.confirmView = true
             return
           }
+          // console.log('fuck you')
           this.checkUser()
         })
         .catch(err => this.setError(err))
@@ -94,12 +95,20 @@ export default {
       const user = this.user;
       if (!user) { return }
 
+      console.log('fuck you')
       Auth.verifiedContact(user)
         .then(data => {
           logger.debug('verify result', data);
           AmplifyStore.commit('setUserVerification', data);
           if (!JS.isEmpty(data.verified)) {
-            this.$router.push('/');
+            console.log('redirect url:', this.$route.query.redirectURL)
+            const redirectURL = this.$route.query.redirectURL
+            if (redirectURL) {
+              // this.$router.push('')
+              location.href = redirectURL
+            } else {
+              this.$router.push('/');
+            }
           } else {
             this.$router.push('/auth/verifyContact');
           }

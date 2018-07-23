@@ -73,8 +73,15 @@ const AuthFilter = (to, from, next) => {
     .catch(err => {
       logger.debug('...no user', err)
       AmplifyStore.commit('setUser', null)
+      console.log('href:', location.href)
+      // const href = location.href
       if (!to.name.startsWith('auth')) {
-        next('/auth/signIn')
+        const href = location.href
+        if (href.indexOf('/#/auth/') < 0) {
+          next(`/auth/signIn?redirectURL=${encodeURIComponent(href)}`)
+        } else {
+          next('/auth/signIn')
+        }
       } else {
         next()
       }

@@ -23,6 +23,10 @@ import Fingerprint2 from 'fingerprintjs2'
 import Amplify, { Auth, Logger } from 'aws-amplify'
 import aws_exports from './aws-exports'
 
+import AWS from 'aws-sdk'
+
+AWS.config.update({region: 'us-west-2'})
+
 Vue.config.productionTip = false
 
 Amplify.configure(aws_exports)
