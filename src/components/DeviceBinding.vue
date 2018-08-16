@@ -12,7 +12,6 @@
 
 <script>
   import { API, Auth } from 'aws-amplify'
-  import { Message } from 'element-ui'
 
   export default {
     name: "device-binding",
@@ -26,22 +25,27 @@
         const self = this
         self.binding = true
         const thingName = this.$route.params.thingName
-
-        API.post('ThingsCRUD', '/Things', {
-          body: {
-            thingName: thingName,
-            createdOn: new Date(),
-            alexaType: 'SmartHome'
-          }
-        }).then(() => {
-          self.binding = false
-          this.$message({
+        Auth.currentSession().then(data => {
+          return data.idToken.jwtToken
+        }).then(idToken => {
+          console.log('ssss')
+          return API.post('dev-aws-smarthome-api', '/things', {
+            headers: {
+              Authorization: idToken
+            },
+            body: {
+              thingName: thingName
+            }
+          })
+        }).then(data => {
+          self.$message({
             showClose: true,
             message: '绑定成功，如果您使用Alexa,可以说 Alexa, discovery Device..',
             type: 'success'
           });
-          console.log('bind successfully')
-        }).catch((err) => {
+          self.binding = false
+          console.log(data)
+        }).catch(err => {
           self.binding = false
           console.error(err)
         })

@@ -128,14 +128,14 @@ export default {
       things: [
         {
           type: 'light',
-          location: '客厅',
+          location: '卧室',
           thingName: 'home-1-lamp',
           status: 'off'
         },
         {
           type: 'light',
-          location: '卧室',
-          thingName: '2',
+          location: '客厅',
+          thingName: 'bulb-s00000002',
           status: 'off'
         },
         {

@@ -30,7 +30,7 @@ AWS.config.update({region: 'us-west-2'})
 Vue.config.productionTip = false
 
 Amplify.configure(aws_exports)
-Amplify.Logger.LOG_LEVEL = 'LOG'
+Amplify.Logger.LOG_LEVEL = 'DEBUG'
 
 const logger = new Logger('main')
 
